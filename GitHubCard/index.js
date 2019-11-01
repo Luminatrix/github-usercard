@@ -2,9 +2,25 @@
 // document.querySelector(".cards");
 
 
-/* Step 1: using axios, send a GET request to the following URL 
-           (replacing the palceholder with your Github name):*/
-          //  https://api.github.com/users/<your name>
+ 
+
+axios.get('https://api.github.com/users/luminatrix')
+.then(response => {
+  console.log(response);
+  response.forEach(data => {
+    cards.append(gitCard)
+  
+.catch(error => {
+  console.log("The data was not returned", error);
+});
+
+const cards = document.querySelector('.cards');
+  // response.forEach(data =>{
+  // cards.append(gitCard)
+  
+  // (response.config.data)
+
+;
 
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -14,16 +30,16 @@
 //           Using DOM methods and properties, create a component that will return the following DOM element:
 
 function gitCard(data){
-  const newCard = document.createElement("div"),
-        newImage = document.createElement("img"),
-        newInfo = document.createElement("div"),
-        newName = document.createElement("h3"),
-        newUsername = document.createElement("p"),
-        newLocation = document.createElement("p"),
-        newProfile = document.createElement("a"),
-        newFollowers = document.createElement("p"),
-        newFollowing = document.createElement("p"),
-        newBio = document.createElement("p");
+  const newCard = document.createElement('div'),
+        newImage = document.createElement('img'),
+        newInfo = document.createElement('div'),
+        newName = document.createElement('h3'),
+        newUsername = document.createElement('p'),
+        newLocation = document.createElement('p'),
+        newProfile = document.createElement('a'),
+        newFollowers = document.createElement('p'),
+        newFollowing = document.createElement('p'),
+        newBio = document.createElement('p');
 
     newImage.src = data.url;
     newName.textContent = data.name;
@@ -41,33 +57,23 @@ function gitCard(data){
     newUsername.classList.add('username');
 
     
-    newCard.appendChild(newImage);
-    newCard.appendChild(newInfo);
-    newInfo.appendChild(newName);
-    newInfo.appendChild(newUsername);
-    newInfo.appendChild(newLocation);
-    newInfo.appendChild(newProfile);
-    newInfo.appendChild(newFollowers);
-    newInfo.appendChild(newFollowing);
-    newInfo.appendChild(newBio);
+    newCard.append(newImage);
+    newCard.append(newInfo);
+    newInfo.append(newName);
+    newInfo.append(newUsername);
+    newInfo.append(newLocation);
+    newInfo.append(newProfile);
+    newInfo.append(newFollowers);
+    newInfo.append(newFollowing);
+    newInfo.append(newBio);
 
 //add eventlisteners here
 
 
-
 }
 
-axios.get("https://api.github.com/users/luminatrix")
-.then(response =>{
-  console.log(response);
-  response.forEach(data => {
-    const cards = document.querySelector('.cards');
 
-cards.appendChild(
-  gitCard(response.data)
-);
-  });
-});
+ 
 
 
 
@@ -85,25 +91,25 @@ cards.appendChild(
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['cladams0203', 'fishmanjohn', 'coltynw', 'Rae-Glazier', 'weng7533', 'dijahdeen'];
+// const followersArray = ['cladams0203', 'fishmanjohn', 'coltynw', 'Rae-Glazier', 'weng7533', 'dijahdeen'];
 
-followersArray.forEach((name) => {
+// followersArray.forEach((name) => {
 
-  axios.get(`https://api.github.com/users/${name}`)
+//   axios.get(`https://api.github.com/users/${name}`)
 
-  //if successfull, do this!
-.then(response => {
+//   //if successfull, do this!
+// .then(response => {
 
-const cards = document.querySelector('.cards');
+// const cards = document.querySelector('.cards');
 
-cards.append(
-  gitCard(response.data)
-);
-console.log(response);
-})
-//if not successful do this!
-.catch(error => console.log(error));
-});
+// cards.append(
+//   gitCard(response.data)
+// );
+// console.log(response);
+// })
+// //if not successful do this!
+// .catch(error => console.log(error));
+// });
 
 
 
